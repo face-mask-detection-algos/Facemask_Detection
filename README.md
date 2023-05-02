@@ -119,3 +119,15 @@ Feel free to **file a new issue** with a respective title and description on the
 ## :eyes: License
 [MIT](https://github.com/techyhoney/Facemask_Detection/blob/master/LICENSE)
 
+
+# Reproducibility of the fairness analysis
+Follow these steps:
+
+1. Set up this repo by setting up a virtualenv and installing the requirements in `requirements.txt` using `pip`
+2. Generate the predicted bounding boxes for a dataset:
+   ```python inference.py --folder path/to/images --output_path path/to/predictions```.
+   Optionally, you may specify different weights for the classifier (`--model_path`) and the face detector (`--weights_path`).
+   The script evaluates all of the images in the folder and produces an output in `.csv` format which includes the file name (without extension), its absolute path, the predicted class, the confidence score of the prediction, and the normalized coordinates of the bounding box.
+3. Match results with ground truth: ```python match_results_bafmd.py --predictions path/to/csv_predictions --ground_truth path/to/ground_truth --output path/to/output_file```. This will produce a number of csv files, one per protected attribute and metric, containing the rate attained by the model for each termination of the protected attribute, the p-value of the binomial test, and the Cohen's h for the difference. The IoU threshold (default=0.5) can be toggled with the `--iou_thershold xx`, with `xx` being the desired float.
+
+

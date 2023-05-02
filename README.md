@@ -130,4 +130,4 @@ Follow these steps:
    The script evaluates all of the images in the folder and produces an output in `.csv` format which includes the file name (without extension), its absolute path, the predicted class, the confidence score of the prediction, and the normalized coordinates of the bounding box.
 3. Match results with ground truth: ```python match_results_bafmd.py --predictions path/to/csv_predictions --ground_truth path/to/ground_truth --output path/to/output_file```. This will produce a number of csv files, one per protected attribute and metric, containing the rate attained by the model for each termination of the protected attribute, the p-value of the binomial test, and the Cohen's h for the difference. The IoU threshold (default=0.5) can be toggled with the `--iou_thershold xx`, with `xx` being the desired float.
 
-
+_Notice that the analogous file for matching the results on FairFace has not been provided due to the ill behavior of the present model on this dataset._
